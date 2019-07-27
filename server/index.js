@@ -20,7 +20,22 @@ app.get('/api', (req, res) => {
 
   request(fullUrl, (error, response, body) => {
     if (error) {
-      res.status(400).send(error);
+      res.status(500).send(error);
+    }
+    res.status(200).send(body);
+  });
+});
+
+app.get('/api', (req, res) => {
+  const username = JSON.parse(req.headers.username);
+  const url = process.env.URL;
+  const userEndpoint = `users/${username}/photos/?client_id=`;
+  const apiKey = process.env.API_ACCESS_KEY;
+  const fullUrl = `${url}${userEndpoint}${apiKey}`;
+
+  request(fullUrl, (error, response, body) => {
+    if (error) {
+      res.status(500).send(error);
     }
     res.status(200).send(body);
   });
