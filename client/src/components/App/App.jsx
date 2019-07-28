@@ -55,14 +55,11 @@ class App extends Component {
   render() {
     const { userPhotos, photos } = this.state;
     return (
-      <React.Fragment>
-        <h1>Unsplash Photos</h1>
-        <div className="app-container">
-          <UserList change={this.handleChange} submit={this.handleSubmit} />
-          {userPhotos ? <PhotoList photos={photos} /> : <PhotoList photos={userPhotos} />}
-        </div>
+      <div className="homepage">
+        <UserList change={this.handleChange} submit={this.handleSubmit} />
+        {userPhotos ? <PhotoList photos={photos} /> : <PhotoList photos={userPhotos} />}
         <Footer />
-      </React.Fragment>
+      </div>
     );
   }
 }
