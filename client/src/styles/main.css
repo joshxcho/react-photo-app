@@ -68,6 +68,23 @@ p {
   flex-wrap: wrap;
 }
 
+.search-bar {
+  height: 40px;
+  width: 200px;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.submit-btn {
+  height: 40px;
+  width: 200px;
+  margin: 10px;
+  background: rgb(0, 190, 162);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
 */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
