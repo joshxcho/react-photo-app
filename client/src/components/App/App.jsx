@@ -27,7 +27,7 @@ class App extends Component {
   getAllPhotos() {
     axios
       .get('/api')
-      .then(res => this.setState({ photos: res.data }))
+      .then(res => this.setState({ photos: res.data, userPhotos: res.data }))
       .catch(err => console.error(err));
   }
 
@@ -42,7 +42,7 @@ class App extends Component {
 
     const config = {
       headers: {
-        url: JSON.stringify(username),
+        url: username,
       },
     };
 
@@ -53,11 +53,11 @@ class App extends Component {
   }
 
   render() {
-    const { userPhotos, photos } = this.state;
+    const { userPhotos } = this.state;
     return (
       <div className="homepage">
         <UserList change={this.handleChange} submit={this.handleSubmit} />
-        {userPhotos ? <PhotoList photos={photos} /> : <PhotoList photos={userPhotos} />}
+        <PhotoList photos={userPhotos} />
         <Footer />
       </div>
     );
