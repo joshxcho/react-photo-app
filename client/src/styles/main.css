@@ -99,26 +99,6 @@ p {
   text-align: center;
 }
 
-/* .app-container {
-  display: flex;
-  flex-direction: row;
-  max-width: 100rem;
-  margin: 50px;
-  justify-content: space-between;
-  border: 0.5px solid;
-} */
-
-.user-list-container {
-  /* display: flex;
-  flex-direction: row;
-  align-items: left;
-  max-width: 30px; */
-}
-/* .photo-list-container {
-  display: flex;
-  flex-direction: column;
-} */
-
 .img-container {
   display: flex;
   flex-direction: row;
