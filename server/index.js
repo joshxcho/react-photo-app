@@ -26,14 +26,14 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.get('/api', (req, res) => {
-  const username = JSON.parse(req.headers.username);
+app.get('/api/user', (req, res) => {
+  const username = req.headers.url;
   const url = process.env.URL;
   const userEndpoint = `users/${username}/photos/?client_id=`;
   const apiKey = process.env.API_ACCESS_KEY;
-  const fullUrl = `${url}${userEndpoint}${apiKey}`;
+  const userUrl = `${url}${userEndpoint}${apiKey}`;
 
-  request(fullUrl, (error, response, body) => {
+  request(userUrl, (error, response, body) => {
     if (error) {
       res.status(500).send(error);
     }

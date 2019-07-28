@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import PhotoList from './PhotoList';
-import UserList from './UserList';
-import Footer from './Footer';
+import PhotoList from '../Photos/PhotoList';
+import UserList from '../User/UserList';
+import Footer from '../Footer/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class App extends Component {
   getAllPhotos() {
     axios
       .get('/api')
-      .then(res => this.setState({ photos: res.data, userPhotos: res.data }))
+      .then(res => this.setState({ photos: res.data }))
       .catch(err => console.error(err));
   }
 
@@ -41,24 +41,26 @@ class App extends Component {
     const { username } = this.state;
 
     const config = {
+      method: 'GET',
       headers: {
-        username: JSON.stringify(username),
+        url: JSON.stringify(username),
       },
     };
+
     axios
-      .get('/api', config)
+      .get('/api/user', config)
       .then(res => this.setState({ userPhotos: res.data }))
       .catch(err => console.error(err));
   }
 
   render() {
-    const { userPhotos } = this.state;
+    const { userPhotos, username, photos } = this.state;
     return (
       <React.Fragment>
         <h1>Unsplash Photos</h1>
         <div className="app-container">
           <UserList change={this.handleChange} submit={this.handleSubmit} />
-          <PhotoList photos={userPhotos} />
+          {userPhotos ? <PhotoList photos={photos} /> : <PhotoList photos={userPhotos} />}
         </div>
         <Footer />
       </React.Fragment>
