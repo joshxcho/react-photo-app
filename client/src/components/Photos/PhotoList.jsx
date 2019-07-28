@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Photo from './Photo';
 
 const PhotoList = ({ photos }) => (
@@ -10,3 +11,7 @@ const PhotoList = ({ photos }) => (
 );
 
 export default PhotoList;
+
+PhotoList.propTypes = {
+  photos: PropTypes.arrayOf(Object).isRequired,
+};
