@@ -41,7 +41,6 @@ class App extends Component {
     const { username } = this.state;
 
     const config = {
-      method: 'GET',
       headers: {
         url: JSON.stringify(username),
       },
@@ -54,7 +53,7 @@ class App extends Component {
   }
 
   render() {
-    const { userPhotos, username, photos } = this.state;
+    const { userPhotos, photos } = this.state;
     return (
       <React.Fragment>
         <h1>Unsplash Photos</h1>
